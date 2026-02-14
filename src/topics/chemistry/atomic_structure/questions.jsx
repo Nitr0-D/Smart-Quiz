@@ -1,7 +1,6 @@
 
 
 
-function Question() {
 
     const questions_database = [
         'What are the three main subatomic particles?',
@@ -10,29 +9,71 @@ function Question() {
         'What are isotopes?'
     ]
 
+    const answers_database = [
+        [
+            'Protons, neutrons, and molecules',
+            'Protons, neutrons, and molecules',
+            'Atoms, molecules, and compounds',
+            'Electrons, photons, and neutrons'
+        ],
+        [
+            'Nucleus',
+            'Valence shell',
+            'Orbital',
+            'Neutron'
+        ]
+    ]
     let index = 0
+    let count = 0
 
-    let question = document.querySelector('h2').textContent
-
-    
-
-
+function Question() {
 
     return(
         <>
-            <h2>{questions_database[0]}</h2>
+            <h2>{questions_database[index]}</h2>
         </>
     )
 }
 
 
 function Options() {
+
+
+    
+    index = 1
+    count = 0
+
+
+    function nextQuestion() {
+        if(index < questions_database.length) {
+             index = index
+             let questionvessel = document.querySelector('h2')
+             questionvessel.textContent = questions_database[index]
+             index = index + 1
+        } else if (index = questions_database.length + 1) {
+
+        }    
+    }
+
+    
+
+   
+
+
     return(
         <>
-            <button className="options"><h4>A</h4> Protons, neutrons, and molecules</button><br />
-            <button className="options"><h4>B</h4> Protons, neutrons, and molecules</button><br />
-            <button className="options"><h4>C</h4> Atoms, molecules, and compunds</button><br />
-            <button className="options"><h4>D</h4> Electrons, photons, and neutrons</button>
+            <button className="options" onClick={() => {
+                nextQuestion()
+                }}><h4>A</h4>{answers_database[count][0]}</button><br />
+            <button className="options" onClick={() => {
+                nextQuestion()
+                }}><h4>B</h4>{answers_database[count][1]}</button><br />
+            <button className="options" onClick={() => {
+                nextQuestion()
+                }}><h4>C</h4>{answers_database[count][2]}</button><br />
+            <button className="options" onClick={() => {
+               nextQuestion()
+                }}><h4>D</h4>{answers_database[count][3]}</button>
         </>
     )
 }
